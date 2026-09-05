@@ -1,4 +1,5 @@
 from pages.base_page import BasePage
+from playwright.sync_api import expect
 
 class WebTablesPage(BasePage):
     def __init__(self, page):
@@ -19,6 +20,7 @@ class WebTablesPage(BasePage):
 
     def open(self):
         self.navigate_to(self.url)
+        self.remove_ads()
 
     def click_add_user(self):
         self.page.click(self.add_button)
@@ -31,7 +33,27 @@ class WebTablesPage(BasePage):
         self.page.fill(self.salary_input, str(user_data["salary"]))
         self.page.fill(self.department_input, user_data["department"])
         self.page.click(self.submit_button)
+        self.page.wait_for_selector("#registration-form-modal", state="hidden", timeout=5000)
 
-    def is_user_in_table(self, email: str) -> bool:
-        self.page.fill(self.search_box, email)
-        return self.page.is_visible(f"text={email}")
+    def search_user(self, text: str):
+        self.page.fill(self.search_box, text) 
+
+    def edit_first_name(self, email: str, new_first_name: str):
+        self.search_user(email)
+        self.page.locator("span[title='Edit']").click()
+        self.page.fill(self.first_name_input, "")
+        self.page.fill(self.first_name_input, new_first_name)
+        self.page.click(self.submit_button)
+
+    def delete_user(self, email: str):
+        self.search_user(email)
+        self.page.locator("span[title='Delete']").click()
+
+    def is_user_in_table(self, text: str) -> bool:
+        self.search_user(text)
+        cell = self.page.get_by_role("cell", name=text, exact=True)
+        try:
+            expect(cell.first).to_be_visible(timeout=8000)
+            return True
+        except Exception as e:
+            return False

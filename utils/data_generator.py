@@ -7,6 +7,8 @@ def generate_user_data():
     return {
         "first_name": fake.first_name(),
         "last_name": fake.last_name(),
+        "username": fake.user_name(),
+        "password": f"Password123@{fake.numerify('###')}",
         "email": fake.email(),
         "mobile" : fake.numerify(text="##########"),
         "address": fake.address().replace("\n", " "),
