@@ -20,7 +20,7 @@ class WebTablesPage(BasePage):
 
     def open(self):
         self.navigate_to(self.url)
-        self.remove_ads()
+        
 
     def click_add_user(self):
         self.page.click(self.add_button)
