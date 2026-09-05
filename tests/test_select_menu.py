@@ -1,6 +1,6 @@
 from pages.select_menu_page import SelectMenuPage
 
-def test_case_3_select_menu(page):
+def test_select_menu(page):
     select_menu_page = SelectMenuPage(page)
 
     select_menu_page.open()

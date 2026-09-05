@@ -2,7 +2,7 @@ import os
 from pages.practice_form_page import PracticeFormPage
 from utils.data_generator import generate_user_data
 
-def test_case_1_fill_practice_form(page, tmp_path):
+def test_fill_practice_form(page, tmp_path):
     form_page = PracticeFormPage(page)
     user_data = generate_user_data()
     

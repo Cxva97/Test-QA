@@ -1,7 +1,7 @@
 from pages.register_page import RegisterPage
 from utils.data_generator import generate_user_data
 
-def test_case_2_create_new_user(page):
+def test_create_new_user(page):
     register_page = RegisterPage(page)
     user_data = generate_user_data()
     
