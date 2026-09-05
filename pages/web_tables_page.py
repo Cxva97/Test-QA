@@ -34,9 +34,10 @@ class WebTablesPage(BasePage):
         self.page.fill(self.department_input, user_data["department"])
         self.page.click(self.submit_button)
         self.page.wait_for_selector("#registration-form-modal", state="hidden", timeout=5000)
+        
 
     def search_user(self, text: str):
-        self.page.fill(self.search_box, text) 
+        self.page.fill(self.search_box, text)  # un solo fill, sin limpiar antes
 
     def edit_first_name(self, email: str, new_first_name: str):
         self.search_user(email)
