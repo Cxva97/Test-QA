@@ -1,0 +1,4 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+PUT,PUT /api/users/2,HTTPError('429 Client Error: Too Many Requests for url: PUT /api/users/2'),33,2026-09-06T02:44:11Z,2026-09-06T02:44:43Z
+POST,POST /api/users,HTTPError('429 Client Error: Too Many Requests for url: POST /api/users'),45,2026-09-06T02:44:07Z,2026-09-06T02:44:43Z
+DELETE,DELETE /api/users/2,HTTPError('429 Client Error: Too Many Requests for url: DELETE /api/users/2'),45,2026-09-06T02:44:05Z,2026-09-06T02:44:42Z
